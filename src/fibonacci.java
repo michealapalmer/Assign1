@@ -1,3 +1,5 @@
+import java.util.*; 
+
 
 public class fibonacci {
 	public fibonacci() {
@@ -51,27 +53,37 @@ public class fibonacci {
 		
 		return arrayOfSeq;
 	}
+	
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		long startTime = System.currentTimeMillis();    
-		long endTime = System.currentTimeMillis();
-		long elapsedTime = endTime - startTime;
 		
+		// TODO Auto-generated method stub
+		
+		//used run configurations to test 	
 		System.out.println("RECURSIVE:\n");
 		int[] fibArray = fibonacciSeq(Integer.valueOf(args[0]));
-
+		double startTime = System.nanoTime();
 		for(int i = 0; i < fibArray.length; i++)
-			System.out.println(fibArray[i]);
-		
-        System.out.println("Elapsed time in milliseconds is: " + elapsedTime);
+			System.out.println(fibArray[i]);		
+		double endTime = System.nanoTime();
+		//getting the time it took to run the method by subtracting startTime from endTime.
+		double elapsedTime = endTime - startTime;
+		System.out.println("Elapsed time in nanoseconds is: " + elapsedTime);
+        //converting time elapsed from nanoseconds to milliseconds	
+        System.out.println("Elapsed time in milliseconds is: " + elapsedTime/1000000);
 		
 		System.out.println("\n\nITERATIVE:\n");
-		int[] fibItArray = fibIterative(Integer.valueOf(args[0]));
 		
+		int[] fibItArray = fibIterative(Integer.valueOf(args[0]));
+		double start = System.nanoTime();
 		for(int i = 0; i < fibItArray.length; i++)
 			System.out.println(fibItArray[i]);
-	
-        System.out.println("Elapsed time in milliseconds is: " + elapsedTime);
+		double end = System.nanoTime();
+		//getting the time it took to run the method by subtracting startTime from endTime.
+		double elapsed = end - start;
+		System.out.println("Elapsed time in nanoseconds is: " + elapsed);
+        //converting time elapsed from nanoseconds to milliseconds
+        System.out.println("Elapsed time in milliseconds is: " + elapsed/1000000);
 	}
 
 }
