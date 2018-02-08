@@ -7,7 +7,8 @@ public class fibonacci {
 		//testing will be done through run configurations tab in main
 		
 	}
-	public static int[] fibonacciSeq(int userInput){
+	 
+	public static int[] fiboSeriesRec(int userInput){
 		int[] arrayOfSeq = new int[userInput]; //array size is the size of the number entered (nth)
 		return fibonacciSeqHelper(arrayOfSeq, 0, userInput);
 		
@@ -20,8 +21,9 @@ public class fibonacci {
 		else if(nthTerm == currentTerm) {
 		    return numArray;
 		}
+		//terms are initialized to first two terms of the Fibonacci series 0 and 1 respectively.
 		else if (currentTerm == 0) {
-		  numArray[currentTerm] = 0;//
+		  numArray[currentTerm] = 0; //pushing integers onto stack
 		  return fibonacciSeqHelper(numArray, currentTerm+1, nthTerm);
 		}
 		else if (currentTerm ==1){
@@ -36,9 +38,13 @@ public class fibonacci {
 		}
 	}
 	
-	public static int[] fibIterative(int userInput){
+	//linear algorithm 
+	public static int[] fibSeriesIte(int userInput){
 		int[] arrayOfSeq = new int[userInput];
+		// iterates to i (number of terms) displaying the sum of previous two terms stored in variable 
+		//arrayOfSeq[i]
 		for(int i = 0; i < arrayOfSeq.length; i++){
+			//terms are initialized to first two terms of the Fibonacci series 0 and 1 respectively
 			if (i == 0) {
 				arrayOfSeq[i] = 0;
 				continue;
@@ -61,25 +67,26 @@ public class fibonacci {
 		
 		//used run configurations to test 	
 		System.out.println("RECURSIVE:\n");
-		int[] fibArray = fibonacciSeq(Integer.valueOf(args[0]));
-		double startTime = System.nanoTime();
+		double startTime = System.nanoTime();//start timing execution of following function
+		int[] fibArray = fiboSeriesRec(Integer.valueOf(args[0]));		
 		for(int i = 0; i < fibArray.length; i++)
 			System.out.println(fibArray[i]);		
-		double endTime = System.nanoTime();
-		//getting the time it took to run the method by subtracting startTime from endTime.
+		double endTime = System.nanoTime();//stop timing execution of function above
+		//execution time is the difference between endTIme and startTime.
 		double elapsedTime = endTime - startTime;
 		System.out.println("Elapsed time in nanoseconds is: " + elapsedTime);
         //converting time elapsed from nanoseconds to milliseconds	
         System.out.println("Elapsed time in milliseconds is: " + elapsedTime/1000000);
 		
-		System.out.println("\n\nITERATIVE:\n");
-		
-		int[] fibItArray = fibIterative(Integer.valueOf(args[0]));
-		double start = System.nanoTime();
+		//iterative method
+        
+        System.out.println("\n\nITERATIVE:\n");
+        double start = System.nanoTime();//start timing execution of following function
+		int[] fibItArray = fibSeriesIte(Integer.valueOf(args[0]));		
 		for(int i = 0; i < fibItArray.length; i++)
 			System.out.println(fibItArray[i]);
-		double end = System.nanoTime();
-		//getting the time it took to run the method by subtracting startTime from endTime.
+		double end = System.nanoTime();//end timing execution for the function above
+		//execution time is the difference between end and start.
 		double elapsed = end - start;
 		System.out.println("Elapsed time in nanoseconds is: " + elapsed);
         //converting time elapsed from nanoseconds to milliseconds
