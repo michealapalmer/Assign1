@@ -32,7 +32,7 @@ import java.util.Scanner;
 	        System.out.println("Elapsed time in milliseconds is: " + elapsedTime/1000000);
 		}
 	 
-		// Method-1: Java program for Fibonacci number using recursion.
+		// Method-1: Java program for Fibonacci number using recursion. Exponential algorithm
 		public static int fibSeriesRec(int number) {
 			if (number == 1 || number == 2) {
 				return 1;
@@ -41,7 +41,7 @@ import java.util.Scanner;
 			return fibSeriesRec(number - 1) + fibSeriesRec(number - 2); // tail recursion
 		}
 	 
-		// Method-2: Java program for Fibonacci number using Iteration (Loop).
+		// Method-2: Java program for Fibonacci number using Iteration (Loop). Linear algorithm
 		public static int fibSeriesIte(int number) {
 			if (number == 1 || number == 2) {
 				return 1;
